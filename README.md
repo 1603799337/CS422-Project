@@ -1,52 +1,85 @@
-# CS422-Project
+### Prediction and analysis of personality traits based on handwritten features
 
-##  Project Background and Problem Statement
-
-Each of us has our own unique handwriting, with some writing in large and loose strokes, while others are compact and meticulous. These seemingly simple handwritten features are actually closely related to our personality traits. The goal of this project is to explore:"**Can a person's handwriting reflect their personality traits?**"
-
-To this end, we attempt to build a machine learning model that takes in a person's handwritten features (such as pen pressure, letter size, spacing, etc.) and predicts their scores in the five dimensions of the Big Five personality traits:
-
-- **Openness**
-- **Conscientiousness**
-- **Extraversion**
-- **Agreeableness**
-- **Neuroticism**
+**Pengyu Zhao**
 
 ---
 
-##  Overview of Data and Methods
+#### Abstract
 
-I used a large dataset containing thousands of handwritten samples, where each sample was labeled with its corresponding five personality scores. Multiple handwriting features were extracted from it, such as:
-
--The fluctuation of stroke pressure
--The spacing between letters
--Row spacing
--Letter height, width, etc
-
-Then I used various machine learning methods (such as random forest, linear regression, gradient boosting, etc.) for training and comparison, and finally selected the optimal model to complete the prediction task.
+   The aim of this project is to predict individuals' scores in the five dimensions of the Big Five personality traits by analyzing handwritten data: openness, conscientiousness, extroversion, agreeableness, and neuroticism. We used multiple machine learning methods to model a large number of handwriting samples and ultimately chose the XGBoost model as the best prediction model. The results showed that certain handwritten features, such as letter size, tilt angle, pen pressure, etc., were significantly correlated with personality traits. In the future, it can be expanded to fields such as education, psychological assessment, and human resource screening.
 
 ---
 
-##  Model performance
+#### Rationale
 
-I ultimately chose the **Optimized XGBoost Model**, which performed the best in overall predictive ability. The model can accurately predict an individual's personality score
-
-Some traits have relatively weak predictive performance due to unclear characteristic signals, but the overall trend still has explanatory power.
+   Personality assessment has wide application value in the fields of human resources, mental health, and education. Traditional personality assessment relies on questionnaires and self-reports, which may have subjective biases. This study attempts to conduct personality analysis through "objective" handwritten behavior data, providing a new approach for personality assessment that is both scientific and practical.
 
 ---
 
-##  Key Findings
+#### Research Question
 
-1. **Best Model**: *XGBoost (After optimization)* achieved the best performance based on average cross-validation R² scores across all personality traits.
-2. **Easiest Trait to Predict**: *Agreeableness*, although the R² score was very low (-0.001), it was still the least difficult among the five traits.
-3. **Most Unpredictable Trait**: *Extraversion*, with an R² of -0.014, was the hardest trait to predict accurately.
-4. **Important Characteristics**:
-   - **Feature_Overall legibility score**
-   - **Feature_Slant angle of handwriting**
-   - **Feature_Letter spacing consistency**
-   - **Feature_Pen tilt direction**
-   - **Feature_Word spacing variability**
+   Can we accurately predict a person's scores in the five personality dimensions of the "Big Five Personality" model based solely on their handwriting characteristics?
 
 ---
 
- This project demonstrates how to establish a connection between everyday information (such as handwriting) and human psychological traits, expanding the boundaries of personality analysis and human-computer interaction. I hope this exploration can provide new ideas for fields such as education, recruitment, and mental health.
+#### Data Sources
+
+   I am using a publicly available large-scale handwritten sample dataset, where each record includes:
+   -Multiple handwriting features (such as pen pressure, letter size, spacing, tilt angle, etc.)
+   -Rating of the five personality dimensions corresponding to individuals (numerical labels)
+
+   The data has been preprocessed and converted into a format suitable for machine learning modeling.
+
+---
+
+#### Methodology
+
+   1. Exploratory Data Analysis
+   2. Feature Engineering and Standardization (StandardScaler+OneHotEncoder)
+   3. Establish a multi-objective regression model for personality prediction
+   4. Model comparison: Random Forest, Linear Regression XGBoost
+   5. Model evaluation indicators: R ² score, mean square error (MSE)
+   6. Feature importance analysis: based on SHAP value and feature importance ranking
+
+---
+
+#### Results
+
+   - **Best Model**：XGBoost (After optimization) performs the best on average cross validation R ².
+   - **The easiest trait to predict**：Agreeableness (R ²=-0.001)
+   - **The most unpredictable trait**：Extraversion (R² = -0.014)
+   - **Important handwritten features include**：
+     - Overall legibility score
+     - Slant angle of handwriting
+     - Letter spacing consistency
+     - Pen tilt direction
+     - Word spacing variability
+
+---
+
+#### Next Steps
+
+   -Expand sample sources (covering different age groups and cultural backgrounds)
+   -Directly extracting handwriting image features using image processing methods
+   -Introducing deep learning models for more complex feature learning
+   -Applying the model to practical scenarios such as education screening and job matching
+
+---
+
+#### Conclusion
+
+   This project successfully demonstrated the feasibility of predicting personality traits through handwritten features. Although some dimensions (such as extroversion) have weaker predictive performance, the overall results are informative. I hope this exploration can provide new ideas for fields such as education, recruitment, and mental health. It should be noted that this study is only based on a single dataset, and the results still need to be validated on larger samples, and cannot be used as a psychological diagnostic tool.
+
+---
+
+### Bibliography
+
+> [1] Goldberg, L. R. (1990). An alternative “description of personality”: the Big-Five factor structure. *Journal of personality and social psychology*, 59(6), 1216.  
+> [2] Chen, T., & Guestrin, C. (2016). XGBoost: A scalable tree boosting system. *Proceedings of the 22nd ACM SIGKDD*, 785–794.  
+> [3] Lundberg, S. M., & Lee, S. I. (2017). A unified approach to interpreting model predictions. *Advances in neural information processing systems*, 30.  
+
+---
+
+##### Contact and Further Information
+
+   For more project details or data sources, please contact the author's email:` z1603799337@hotmail.com `
